@@ -41,7 +41,7 @@ const Results = () => {
       try {
         setStatus('polling');
 
-        const response = await fetch('https://n8n.zach13.com/webhook-test/276ad840-3dcb-4e2b-ac0f-30b1cb9f158f', {
+        const response = await fetch('https://n8n.zach13.com/webhook/276ad840-3dcb-4e2b-ac0f-30b1cb9f158f', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
