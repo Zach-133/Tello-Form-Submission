@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
 
-const WEBHOOK_URL = "https://n8n.zach13.com/webhook-test/743697f7-3774-4876-b10d-775cbbb67613";
+const WEBHOOK_URL = "https://n8n.zach13.com/webhook/743697f7-3774-4876-b10d-775cbbb67613";
 
 interface FormData {
   name: string;
