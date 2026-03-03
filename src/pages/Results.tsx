@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import AppHeader from "@/components/AppHeader";
 import { ArrowLeft, Loader2, AlertCircle, RefreshCw, Brain, Lightbulb, MessageSquare, Target, Trophy, TrendingUp, Award } from "lucide-react";
 import ScoreCard from "@/components/ScoreCard";
 import PerformanceOverview from "@/components/PerformanceOverview";
@@ -101,7 +102,9 @@ const Results = () => {
   const performanceRating = results ? getPerformanceRating(results.finalScore || 0) : null;
 
   return (
-    <div className="min-h-screen gradient-hero py-12 px-4">
+    <div className="min-h-screen gradient-hero">
+      <AppHeader />
+      <div className="py-12 px-4">
       <div className="max-w-6xl mx-auto space-y-8">
         
         {/* STATUS: Initializing or Polling */}
@@ -307,6 +310,7 @@ const Results = () => {
             </div>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Clock, Briefcase, BarChart3, Mic, ArrowLeft } from "lucide-react";
 import { useConversation } from "@elevenlabs/react";
+import AppHeader from "@/components/AppHeader";
 
 interface InterviewState {
   sessionId: string;
@@ -112,6 +113,7 @@ const Interview = () => {
 
   return (
     <div className="min-h-screen gradient-hero">
+      <AppHeader />
       {/* Decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-coral/15 blur-3xl" />

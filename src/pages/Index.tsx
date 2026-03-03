@@ -1,9 +1,11 @@
 import { InterviewForm } from "@/components/InterviewForm";
 import { Mic, Sparkles, Target } from "lucide-react";
+import AppHeader from "@/components/AppHeader";
 
 const Index = () => {
   return (
     <div className="min-h-screen gradient-hero">
+      <AppHeader />
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
