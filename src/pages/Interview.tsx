@@ -43,14 +43,14 @@ const Interview = () => {
 
   // Redirect if no state
   if (!state) {
-    navigate('/', { replace: true });
+    navigate('/form', { replace: true });
     return null;
   }
 
   const handleStartInterview = async () => {
     if (!state?.sessionId) {
       alert('No session found. Please start from the form.');
-      navigate('/');
+      navigate('/form');
       return;
     }
 
@@ -114,8 +114,8 @@ const Interview = () => {
     <div className="min-h-screen gradient-hero">
       {/* Decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-accent/40 blur-3xl" />
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-coral/15 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-coral/10 blur-3xl" />
       </div>
 
       <div className="relative container mx-auto px-4 py-10 lg:py-16">
@@ -155,44 +155,45 @@ const Interview = () => {
               <div className="text-center space-y-8 max-w-sm w-full">
                 {/* Mic icon hero */}
                 <div className="flex justify-center">
-                  <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center animate-float">
-                    <Mic className="w-9 h-9 text-primary" />
+                  <div className="w-20 h-20 rounded-full bg-coral/10 flex items-center justify-center animate-float">
+                    <Mic className="w-9 h-9 text-coral" />
                   </div>
                 </div>
 
-                <div className="bg-accent/40 border border-accent-foreground/10 rounded-xl p-5 text-left space-y-3">
+                <div className="bg-coral-light/40 border border-coral/20 rounded-xl p-5 text-left space-y-3">
                   <h3 className="font-semibold text-foreground text-sm uppercase tracking-wide">Before You Begin</h3>
                   <ul className="space-y-2.5 text-sm text-muted-foreground">
                     <li className="flex items-start gap-2">
-                      <span className="text-primary mt-0.5">✓</span>
+                      <span className="text-coral mt-0.5">✓</span>
                       Microphone connected and working
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary mt-0.5">✓</span>
+                      <span className="text-coral mt-0.5">✓</span>
                       Quiet space with minimal noise
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary mt-0.5">✓</span>
+                      <span className="text-coral mt-0.5">✓</span>
                       Speak clearly at a normal pace
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary mt-0.5">✓</span>
+                      <span className="text-coral mt-0.5">✓</span>
                       Close any apps using your microphone (e.g. calls, video chat)
                     </li>
                   </ul>
                 </div>
 
                 <Button
+                  variant="coral"
                   size="lg"
                   onClick={handleStartInterview}
-                  className="w-full py-6 text-lg gradient-warm text-primary-foreground shadow-warm hover:opacity-90 transition-opacity rounded-xl"
+                  className="w-full py-6 text-lg rounded-xl"
                 >
                   <Mic className="w-5 h-5 mr-2" />
                   Start Interview
                 </Button>
 
                 <button
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate('/form')}
                   className="text-muted-foreground hover:text-foreground text-sm inline-flex items-center gap-1.5 transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -206,9 +207,9 @@ const Interview = () => {
               <div className="text-center space-y-5">
                 <div className="relative w-24 h-24 mx-auto">
                   <div className="absolute inset-0 rounded-full border-4 border-muted"></div>
-                  <div className="absolute inset-0 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-                  <div className="absolute inset-3 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Mic className="w-6 h-6 text-primary animate-pulse-warm" />
+                  <div className="absolute inset-0 rounded-full border-4 border-coral border-t-transparent animate-spin"></div>
+                  <div className="absolute inset-3 rounded-full bg-coral/10 flex items-center justify-center">
+                    <Mic className="w-6 h-6 text-coral animate-pulse-warm" />
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold text-foreground font-serif">Connecting...</h3>
@@ -225,7 +226,7 @@ const Interview = () => {
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                       <div
                         key={i}
-                        className="w-1.5 bg-primary/80 rounded-full animate-pulse"
+                        className="w-1.5 bg-coral rounded-full animate-pulse"
                         style={{
                           height: `${Math.random() * 48 + 16}px`,
                           animationDelay: `${i * 0.12}s`,
@@ -234,15 +235,15 @@ const Interview = () => {
                     ))}
                   </div>
 
-                  <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2.5 rounded-full font-medium text-sm">
-                    <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                  <div className="inline-flex items-center gap-2 bg-coral/10 text-coral-dark px-5 py-2.5 rounded-full font-medium text-sm">
+                    <span className="w-2 h-2 bg-coral rounded-full animate-pulse" />
                     Interview Active
                   </div>
 
                   <p className="text-muted-foreground text-sm">🎤 Speak clearly — your interviewer is listening</p>
                 </div>
 
-                <div className="bg-accent/30 border border-accent-foreground/10 rounded-xl p-4">
+                <div className="bg-coral-light/30 border border-coral/15 rounded-xl p-4">
                   <p className="text-sm text-muted-foreground">
                     💡 Take your time to think before answering each question
                   </p>

@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['DM Sans', 'sans-serif'],
-        serif: ['Fraunces', 'serif'],
+        serif: ["'DM Serif Display'", "serif"],
+        sans: ["'Inter'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -83,6 +83,8 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 8px)",
       },
       keyframes: {
         "accordion-down": {
@@ -106,27 +108,28 @@ export default {
           to: { opacity: "1" },
         },
         "count-up": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-soft": "pulse-soft 2s ease-in-out infinite",
+        "pulse-soft": "pulse-soft 3s ease-in-out infinite",
         "slide-up": "slide-up 0.6s ease-out forwards",
-        "fade-in": "fade-in 0.6s ease-out forwards",
-        "count-up": "count-up 1s ease-out forwards",
+        "fade-in": "fade-in 0.5s ease-out forwards",
+        "count-up": "count-up 0.8s ease-out forwards",
         float: "float 4s ease-in-out infinite",
       },
       boxShadow: {
-        medium: "0 4px 24px -4px hsl(25 30% 15% / 0.12), 0 1px 6px -1px hsl(25 30% 15% / 0.08)",
-        strong: "0 8px 40px -8px hsl(25 30% 15% / 0.2), 0 2px 8px -2px hsl(25 30% 15% / 0.1)",
-        coral: "0 4px 20px -4px hsl(var(--coral) / 0.35)",
+        soft: "0 4px 20px -4px hsl(25 30% 15% / 0.08)",
+        medium: "0 8px 30px -6px hsl(25 30% 15% / 0.12)",
+        strong: "0 12px 40px -8px hsl(25 30% 15% / 0.18)",
+        coral: "0 8px 24px -4px hsl(18 75% 65% / 0.35)",
       },
     },
   },

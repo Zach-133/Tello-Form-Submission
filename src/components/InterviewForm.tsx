@@ -154,8 +154,9 @@ export function InterviewForm() {
 
       <Button
         type="submit"
+        variant="coral"
         disabled={!isFormValid || isLoading}
-        className="h-12 w-full gradient-warm text-primary-foreground font-semibold shadow-warm hover:opacity-90 transition-all duration-200 disabled:opacity-50"
+        className="h-12 w-full font-semibold disabled:opacity-50"
       >
         {isLoading ? (
           <>

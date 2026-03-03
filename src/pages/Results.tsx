@@ -109,9 +109,9 @@ const Results = () => {
           <Card className="bg-card rounded-2xl shadow-card border border-border/50 p-12">
             <div className="flex flex-col items-center gap-6">
               <div className="relative">
-                <Loader2 className="w-20 h-20 text-primary animate-spin" />
+                <Loader2 className="w-20 h-20 text-coral animate-spin" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Award className="w-8 h-8 text-primary animate-pulse" />
+                  <Award className="w-8 h-8 text-coral animate-pulse" />
                 </div>
               </div>
               <div className="text-center">
@@ -154,7 +154,7 @@ const Results = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate('/form')}
                   className="gap-2"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -194,7 +194,7 @@ const Results = () => {
                 </h2>
 
                 {/* Large Score Circle */}
-                <div className="inline-flex flex-col items-center justify-center w-48 h-48 rounded-full bg-gradient-to-br from-primary/5 via-accent/10 to-secondary shadow-card mb-6 relative">
+                <div className="inline-flex flex-col items-center justify-center w-48 h-48 rounded-full bg-gradient-to-br from-coral/10 via-gold/10 to-secondary shadow-card mb-6 relative">
                   <div className="text-center z-10">
                     <p className={`text-6xl font-bold ${getScoreColor(results.finalScore || 0)}`}>
                       {results.finalScore || 0}
@@ -219,7 +219,7 @@ const Results = () => {
                       r="45"
                       fill="none"
                       stroke="currentColor"
-                      className="text-primary"
+                      className="text-coral"
                       strokeWidth="4"
                       strokeDasharray={`${((results.finalScore || 0) / 100) * 283} 283`}
                       strokeLinecap="round"
@@ -297,9 +297,10 @@ const Results = () => {
             {/* Start New Interview Button */}
             <div className="text-center pt-8">
               <Button
-                onClick={() => navigate('/')}
+                variant="coral"
+                onClick={() => navigate('/form')}
                 size="lg"
-                className="px-8 py-6 text-lg font-semibold shadow-warm hover:shadow-lg transition-all"
+                className="px-8 py-6 text-lg font-semibold"
               >
                 Start New Interview
               </Button>
