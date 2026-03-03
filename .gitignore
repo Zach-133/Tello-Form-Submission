@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Screenshots (keep folder, ignore images)
+temporary screenshots/*.png
+temporary screenshots/*.jpg
+temporary screenshots/*.jpeg
+temporary screenshots/*.webp

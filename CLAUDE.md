@@ -9,50 +9,79 @@
 - Screenshot your output, compare against reference, fix mismatches, re-screenshot. Do at least 2 comparison rounds. Stop only when no visible differences remain or user says so.
 
 ## Local Server
-
-### React/Vite Projects (e.g. `excel-interview-lab/`)
-- Start the dev server: `cd excel-interview-lab && npm run dev` (Vite auto-picks an available port — usually 3001 if 3000 is taken)
-- Do NOT use `node serve.mjs` for Vite projects — that script is for static HTML only.
-- Check the terminal output for the actual port being used before screenshotting.
-
-### Static HTML Projects
-- Start the dev server: `node serve.mjs` (serves the project root at `http://localhost:3000`)
-- `serve.mjs` lives in `c:\Users\Admin\Downloads\Tello FrontEnd\`.
+- This is a **React + Vite** project. Start the dev server from the project root:
+  ```
+  npm run dev
+  ```
+- Vite serves on **http://localhost:8080** (fixed port, see `vite.config.ts`).
+- Do NOT use `node serve.mjs` — that is for static HTML projects only.
 - If the server is already running, do not start a second instance.
 
 ## Screenshot Workflow
 - Puppeteer is installed at `C:/Users/Admin/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/Admin/.cache/puppeteer/`.
-- **Always screenshot from localhost:** `node screenshot.mjs http://localhost:PORT` (replace PORT with the actual dev server port)
-- `screenshot.mjs` lives in `c:\Users\Admin\Downloads\Tello FrontEnd\`. Use it as-is.
-- Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
-- Optional label suffix: `node screenshot.mjs http://localhost:PORT label` → saves as `screenshot-N-label.png`
-- After screenshotting, read the PNG from `temporary screenshots/` with the Read tool — Claude can see and analyze the image directly.
+- **`screenshot.mjs`** lives at `C:\Users\Admin\Downloads\Tello Frontend v4\screenshot.mjs`. Use it as-is.
+- **Always screenshot from localhost:** `node "C:\Users\Admin\Downloads\Tello Frontend v4\screenshot.mjs" http://localhost:8080`
+- Screenshots are saved to `C:\Users\Admin\Downloads\Tello Frontend v4\temporary screenshots\screenshot-N.png`.
+- Optional label suffix: append a label argument to save as `screenshot-N-label.png`.
+- After screenshotting, read the PNG with the Read tool — Claude can see and analyze the image directly.
 - When comparing, be specific: "heading is 32px but reference shows ~24px", "card gap is 16px but should be 24px"
-- Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing
+- Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing.
+
+## Project Structure
+```
+tello-v2/
+├── src/
+│   ├── components/
+│   │   ├── landing/       # Landing page sections (Navbar, HeroSection, etc.)
+│   │   ├── ui/            # shadcn/ui primitives (Button, Card, Input, etc.)
+│   │   ├── InterviewForm.tsx
+│   │   ├── ScoreCard.tsx
+│   │   └── PerformanceOverview.tsx
+│   ├── pages/
+│   │   ├── Landing.tsx    # Route: /
+│   │   ├── Index.tsx      # Route: /form  (interview setup form)
+│   │   ├── Interview.tsx  # Route: /interview
+│   │   ├── Results.tsx    # Route: /results/:sessionId
+│   │   └── NotFound.tsx
+│   ├── assets/            # hero-illustration.png, avatar-*.png
+│   ├── index.css          # Design system tokens (CSS variables) + Tailwind
+│   └── App.tsx            # Router
+├── brand_assets/          # Tello Logo.jpg
+├── public/
+│   ├── favicon.svg
+│   └── robots.txt
+├── temporary screenshots/ # Auto-created by screenshot.mjs (PNGs gitignored)
+├── tailwind.config.ts
+└── index.html
+```
+
+## Route Map
+| Path | Component | Purpose |
+|------|-----------|---------|
+| `/` | `Landing.tsx` | Marketing landing page |
+| `/form` | `Index.tsx` | Interview setup form |
+| `/interview` | `Interview.tsx` | Live AI interview |
+| `/results/:sessionId` | `Results.tsx` | Score & feedback |
 
 ## Output Defaults
-- **React/Vite projects:** Edit component `.tsx` files in `src/components/` — do NOT create a standalone `index.html`.
-- **Static projects:** Single `index.html` file, all styles inline.
-- Tailwind CSS via CDN (static only): `<script src="https://cdn.tailwindcss.com"></script>`
+- Edit component `.tsx` files in `src/` — do NOT create a standalone `index.html`.
 - Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
-- Mobile-first responsive
+- Mobile-first responsive.
 
 ## Brand Assets
-- Always check the `brand_assets/` folder before designing. It may contain logos, color guides, style guides, or images.
-- If assets exist there, use them. Do not use placeholders where real assets are available.
-- If a logo is present, use it. If a color palette is defined, use those exact values — do not invent brand colors.
-- For the Tello project: the higher-quality logo is available in the GitHub repo (`excel-interview-lab/`). Prefer it over anything in `brand_assets/`.
+- Check `brand_assets/` before designing — contains `Tello Logo.jpg`.
+- Design system is defined in `src/index.css` (CSS variables) and `tailwind.config.ts`.
+- Primary colour palette: deep brown primary, coral CTA, warm cream backgrounds.
+- Fonts: **DM Serif Display** (headings) + **Inter** (body).
 
 ## Anti-Generic Guardrails
-- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Pick a custom brand color and derive from it.
-- **Shadows:** Never use flat `shadow-md`. Use layered, color-tinted shadows with low opacity.
-- **Typography:** Never use the same font for headings and body. Pair a display/serif with a clean sans. Apply tight tracking (`-0.03em`) on large headings, generous line-height (`1.7`) on body.
-- **Gradients:** Layer multiple radial gradients. Add grain/texture via SVG noise filter for depth.
+- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Use design system tokens (`primary`, `coral`, `teal`, `gold`, `success`).
+- **Shadows:** Never use flat `shadow-md`. Use `shadow-soft`, `shadow-medium`, `shadow-strong`, `shadow-coral`.
+- **Typography:** Headings use `font-serif` (DM Serif Display). Body uses Inter. Apply tight tracking on large headings, generous line-height on body.
+- **Gradients:** Use `bg-gradient-coral`, `bg-gradient-warm`, `bg-gradient-hero`, `bg-gradient-card` utility classes.
 - **Animations:** Only animate `transform` and `opacity`. Never `transition-all`. Use spring-style easing.
-- **Interactive states:** Every clickable element needs hover, focus-visible, and active states. No exceptions.
-- **Images:** Add a gradient overlay (`bg-gradient-to-t from-black/60`) and a color treatment layer with `mix-blend-multiply`.
-- **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
-- **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
+- **Interactive states:** Every clickable element needs hover, focus-visible, and active states.
+- **Spacing:** Use intentional, consistent spacing tokens.
 
 ## Hard Rules
 - Do not add sections, features, or content not in the reference
