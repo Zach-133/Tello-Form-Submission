@@ -57,6 +57,29 @@
     --sidebar-accent-foreground: 25 30% 20%;
     --sidebar-border: 30 20% 88%;
     --sidebar-ring: 18 70% 50%;
+
+    /* Coral palette */
+    --coral: 15 80% 58%;
+    --coral-light: 15 80% 95%;
+    --coral-dark: 15 80% 42%;
+
+    /* Teal palette */
+    --teal: 174 60% 40%;
+    --teal-light: 174 60% 93%;
+
+    /* Gold palette */
+    --gold: 43 85% 50%;
+    --gold-light: 43 85% 93%;
+
+    /* Success */
+    --success: 142 70% 40%;
+    --success-light: 142 70% 93%;
+
+    /* Extended gradients & shadows */
+    --gradient-coral: linear-gradient(135deg, hsl(var(--coral)) 0%, hsl(15 80% 48%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(40 30% 96%) 100%);
+    --shadow-medium: 0 4px 24px -4px hsl(25 30% 15% / 0.12), 0 1px 6px -1px hsl(25 30% 15% / 0.08);
+    --shadow-strong: 0 8px 40px -8px hsl(25 30% 15% / 0.2), 0 2px 8px -2px hsl(25 30% 15% / 0.1);
   }
 
   .dark {
@@ -123,6 +146,25 @@
     background: var(--gradient-hero);
   }
 
+  .gradient-coral {
+    background: var(--gradient-coral);
+  }
+
+  .bg-gradient-coral {
+    background: var(--gradient-coral);
+  }
+
+  .text-gradient-coral {
+    background: var(--gradient-coral);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
   .shadow-warm {
     box-shadow: var(--shadow-warm);
   }
@@ -133,6 +175,26 @@
 
   .shadow-card {
     box-shadow: var(--shadow-card);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
   }
 }
 
@@ -161,4 +223,19 @@
 
 .animate-pulse-warm {
   animation: pulse-warm 2s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
